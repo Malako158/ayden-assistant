@@ -1,0 +1,20 @@
+{
+  "id": "conv-1779552972733-q6808l36f",
+  "title": "Setup Weekly Optimizer with your schedule",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779552972734,
+  "updatedAt": 1779558081371,
+  "lastResponseAt": 1779558081371,
+  "sessionId": "fa51d192-1030-44bd-aeba-df97df51c72f",
+  "sdkSessionId": "fa51d192-1030-44bd-aeba-df97df51c72f",
+  "currentNote": "04 Weekly Optimizer/(C) Weekly Optimizer Module — Setup & Status.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 355,
+    "cacheReadInputTokens": 107514,
+    "contextWindow": 200000,
+    "contextTokens": 107870,
+    "percentage": 54
+  }
+}

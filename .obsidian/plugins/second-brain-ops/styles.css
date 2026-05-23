@@ -1,0 +1,8 @@
+/* Second Brain Ops Center — Obsidian Plugin Styles
+ * These are loaded via Obsidian's styles.css mechanism.
+ * The plugin also injects component-level styles dynamically.
+ */
+
+.second-brain-ops-view {
+  padding: 0;
+}

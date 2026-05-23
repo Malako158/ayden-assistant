@@ -1,0 +1,19 @@
+{
+  "id": "conv-1779506743109-b7c95d9en",
+  "title": "Review Assistant setup status",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779506743110,
+  "updatedAt": 1779552767867,
+  "lastResponseAt": 1779552637832,
+  "sessionId": "1800f88b-25ef-4a39-b56f-2fd26cf9b56c",
+  "sdkSessionId": "1800f88b-25ef-4a39-b56f-2fd26cf9b56c",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 1707,
+    "cacheReadInputTokens": 55577,
+    "contextWindow": 200000,
+    "contextTokens": 57287,
+    "percentage": 29
+  }
+}

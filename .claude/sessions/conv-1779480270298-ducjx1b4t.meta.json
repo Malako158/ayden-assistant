@@ -1,0 +1,19 @@
+{
+  "id": "conv-1779480270298-ducjx1b4t",
+  "title": "Assess Claude Flow for token optimization",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779480270298,
+  "updatedAt": 1779480992252,
+  "lastResponseAt": 1779480958240,
+  "sessionId": "7f22bdd1-50a1-4b48-8057-adacd146eb61",
+  "sdkSessionId": "7f22bdd1-50a1-4b48-8057-adacd146eb61",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 360,
+    "cacheReadInputTokens": 36041,
+    "contextWindow": 200000,
+    "contextTokens": 36402,
+    "percentage": 18
+  }
+}

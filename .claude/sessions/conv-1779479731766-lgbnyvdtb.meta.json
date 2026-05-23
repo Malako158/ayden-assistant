@@ -1,0 +1,19 @@
+{
+  "id": "conv-1779479731766-lgbnyvdtb",
+  "title": "Edit second-brain-ops UI from Claude",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779479731766,
+  "updatedAt": 1779479843127,
+  "lastResponseAt": 1779479757368,
+  "sessionId": "713d8f84-a7c6-4141-8d27-0bba901bc9ad",
+  "sdkSessionId": "713d8f84-a7c6-4141-8d27-0bba901bc9ad",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 531,
+    "cacheReadInputTokens": 21571,
+    "contextWindow": 200000,
+    "contextTokens": 22103,
+    "percentage": 11
+  }
+}

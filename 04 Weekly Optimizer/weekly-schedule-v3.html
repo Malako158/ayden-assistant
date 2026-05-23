@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayden — Weekly Schedule v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ec;
+    --surface: #ffffff;
+    --surface2: #eeebe3;
+    --border: #ddd9cf;
+    --border2: #c9c4b8;
+    --accent: #1a1a1a;
+    --accent2: #c0392b;
+    --text: #1a1a1a;
+    --muted: #7a7568;
+    --muted2: #b5b0a5;
+
+    --work: #1a1a1a;
+    --gym: #c0392b;
+    --sleep: #4a5568;
+    --break: #2d6a4f;
+    --personal: #7c5cbf;
+    --wind: #8a7968;
+
+    --work-bg: #1a1a1a;
+    --gym-bg: #c0392b;
+    --sleep-bg: #4a5568;
+    --break-bg: #2d6a4f;
+    --personal-bg: #7c5cbf;
+    --wind-bg: #a09080;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    min-height: 100vh;
+    padding: 48px 28px 80px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  header {
+    margin-bottom: 52px;
+    position: relative;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .eyebrow {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 9vw, 100px);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 0.88;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+
+  h1 .highlight {
+    color: var(--accent2);
+  }
+
+  .header-stats {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border2);
+    align-self: flex-end;
+  }
+
+  .hstat {
+    padding: 14px 24px;
+    border-right: 1px solid var(--border2);
+    text-align: center;
+  }
+  .hstat:last-child { border-right: none; }
+
+  .hstat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--accent2);
+    line-height: 1;
+  }
+
+  .hstat-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  .header-rule {
+    height: 3px;
+    background: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .ldot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* SECTION TITLES */
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    margin-top: 52px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border2);
+  }
+
+  /* DAY CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 2px;
+    background: var(--border2);
+    border: 1px solid var(--border2);
+  }
+
+  .day-card {
+    background: var(--surface);
+    overflow: hidden;
+  }
+
+  .card-top {
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-day-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .card-pill {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 2px;
+  }
+
+  .pill-gym { background: var(--gym-bg); color: #fff; }
+  .pill-work { background: var(--work-bg); color: #fff; }
+  .pill-off { background: var(--surface2); color: var(--muted); border: 1px solid var(--border2); }
+
+  .card-hours {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px;
+    color: var(--accent2);
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  /* VISUAL TIMELINE BAR */
+  .bar-container {
+    padding: 14px 20px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bar-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 8px;
+    color: var(--muted2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bar-track {
+    height: 12px;
+    background: var(--surface2);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    gap: 1px;
+  }
+
+  .bar-seg {
+    height: 100%;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+  }
+  .bar-seg:hover { opacity: 0.75; }
+
+  /* TIMELINE ROWS */
+  .tl {
+    padding: 14px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tl-row {
+    display: grid;
+    grid-template-columns: 72px 8px 1fr;
+    gap: 8px;
+    align-items: start;
+  }
+
+  .tl-time {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9.5px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    padding-top: 2px;
+    text-align: right;
+  }
+
+  .tl-pip {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .tl-content {}
+
+  .tl-main {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .tl-sub {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 1px;
+    font-style: italic;
+  }
+
+  .tl-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+    grid-column: 1 / -1;
+  }
+
+  /* WORK HOUR SUMMARY */
+  .work-summary {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    background: var(--border2);
+    border: 1px solid var(--border2);
+  }
+
+  .ws-col {
+    background: var(--surface);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .ws-day {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .ws-bar-wrap {
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .ws-bar {
+    width: 28px;
+    border-radius: 2px 2px 0 0;
+    background: var(--work-bg);
+    transition: opacity 0.2s;
+  }
+  .ws-bar.gym-day { background: var(--gym-bg); }
+
+  .ws-hours {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .ws-type {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 8px;
+    color: var(--muted2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  /* RULES */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2px;
+    background: var(--border2);
+    border: 1px solid var(--border2);
+    margin-top: 52px;
+  }
+
+  .rule-card {
+    background: var(--surface);
+    padding: 22px 20px;
+  }
+
+  .rule-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--muted2);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .rule-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .rule-body {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .rule-accent {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: var(--accent2);
+    margin-bottom: 10px;
+    margin-top: 4px;
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 12px;
+  }
+
+  .footer-text {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px;
+    color: var(--muted2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-total {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div>
+      <div class="eyebrow">Escalation Media · Weekly OS · v2.0</div>
+      <h1>8 HOUR<br><span class="highlight">WORK</span><br>SYSTEM</h1>
+    </div>
+    <div class="header-stats">
+      <div class="hstat">
+        <div class="hstat-val">8h</div>
+        <div class="hstat-label">Work / Day</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">40h</div>
+        <div class="hstat-label">Work / Week</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">3×</div>
+        <div class="hstat-label">Gym</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">8h</div>
+        <div class="hstat-label">Sleep</div>
+      </div>
+    </div>
+  </div>
+  <div class="header-rule"></div>
+  <div class="legend">
+    <div class="legend-item"><div class="ldot" style="background:var(--work-bg)"></div> Deep Work</div>
+    <div class="legend-item"><div class="ldot" style="background:var(--gym-bg)"></div> Gym</div>
+    <div class="legend-item"><div class="ldot" style="background:var(--break-bg)"></div> Break / Food</div>
+    <div class="legend-item"><div class="ldot" style="background:var(--personal-bg)"></div> Personal</div>
+    <div class="legend-item"><div class="ldot" style="background:var(--wind-bg)"></div> Wind Down</div>
+    <div class="legend-item"><div class="ldot" style="background:var(--sleep-bg)"></div> Sleep</div>
+  </div>
+</header>
+
+<!-- DAILY CARDS -->
+<div class="section-label">Weekday Schedule</div>
+
+<div class="cards-grid">
+
+  <!-- MONDAY -->
+  <div class="day-card">
+    <div class="card-top">
+      <div>
+        <div class="card-day-name">Monday</div>
+        <div class="card-hours">8h work · Gym AM</div>
+      </div>
+      <span class="card-pill pill-gym">Gym Day</span>
+    </div>
+    <div class="bar-container">
+      <div class="bar-label"><span>6 AM</span><span>10 PM</span></div>
+      <div class="bar-track">
+        <!-- 6:00–6:15 wake (15min) -->
+        <div class="bar-seg" style="background:var(--sleep-bg);width:1.9%" title="Wake"></div>
+        <!-- 6:15–7:45 gym (90min) -->
+        <div class="bar-seg" style="background:var(--gym-bg);width:11.25%" title="Gym"></div>
+        <!-- 7:45–8:30 shower+breakfast (45min) -->
+        <div class="bar-seg" style="background:var(--break-bg);width:5.6%" title="Shower + Breakfast"></div>
+        <!-- 8:30–12:30 work 1 (4h) -->
+        <div class="bar-seg" style="background:var(--work-bg);width:30%" title="Deep Work Block 1"></div>
+        <!-- 12:30–1:15 lunch (45min) -->
+        <div class="bar-seg" style="background:var(--break-bg);width:5.6%" title="Lunch"></div>
+        <!-- 1:15–5:15 work 2 (4h) -->
+        <div class="bar-seg" style="background:var(--work-bg);width:30%" title="Deep Work Block 2"></div>
+        <!-- 5:15–9:00 personal (3h45) -->
+        <div class="bar-seg" style="background:var(--personal-bg);width:28.1%" title="Personal"></div>
+        <!-- 9:00–10:00 wind down -->
+        <div class="bar-seg" style="background:var(--wind-bg);width:7.5%" title="Wind Down"></div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><span class="tl-time">6:00 AM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Wake Up</div><div class="tl-sub">Hydrate, get ready</div></div></div>
+      <div class="tl-row"><span class="tl-time">6:15 AM</span><div class="tl-pip" style="background:var(--gym-bg)"></div><div class="tl-content"><div class="tl-main">Gym</div><div class="tl-sub">1h 30min session</div></div></div>
+      <div class="tl-row"><span class="tl-time">7:45 AM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Shower + Breakfast</div><div class="tl-sub">45 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">8:30 AM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 1</div><div class="tl-sub">Editing, production, creative output · 4h</div></div></div>
+      <div class="tl-row"><span class="tl-time">12:30 PM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Lunch Break</div><div class="tl-sub">Cook + eat · 45 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">1:15 PM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 2</div><div class="tl-sub">Ops, outreach, client comms, ClickUp · 4h</div></div></div>
+      <div class="tl-row"><span class="tl-time">5:15 PM</span><div class="tl-pip" style="background:var(--personal-bg)"></div><div class="tl-content"><div class="tl-main">Personal Time</div><div class="tl-sub">Dinner, decompress, girlfriend/friends</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:00 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Wind Down</div><div class="tl-sub">No screens, read, prep for tomorrow</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:50 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Meditation</div><div class="tl-sub">5–10 min · clear the head, set intention for tomorrow</div></div></div>
+      <div class="tl-row"><span class="tl-time">10:00 PM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Lights Out</div></div></div>
+    </div>
+  </div>
+
+  <!-- TUESDAY -->
+  <div class="day-card">
+    <div class="card-top">
+      <div>
+        <div class="card-day-name">Tuesday</div>
+        <div class="card-hours">8h work · Extra capacity</div>
+      </div>
+      <span class="card-pill pill-work">Work Day</span>
+    </div>
+    <div class="bar-container">
+      <div class="bar-label"><span>6 AM</span><span>10 PM</span></div>
+      <div class="bar-track">
+        <div class="bar-seg" style="background:var(--sleep-bg);width:3.75%" title="Wake + Breakfast"></div>
+        <div class="bar-seg" style="background:var(--break-bg);width:3.75%" title="Breakfast"></div>
+        <div class="bar-seg" style="background:var(--work-bg);width:31.25%" title="Deep Work Block 1 · 5h"></div>
+        <div class="bar-seg" style="background:var(--break-bg);width:7.5%" title="Lunch · 1h"></div>
+        <div class="bar-seg" style="background:var(--work-bg);width:18.75%" title="Deep Work Block 2 · 3h"></div>
+        <div class="bar-seg" style="background:var(--personal-bg);width:28.75%" title="Personal"></div>
+        <div class="bar-seg" style="background:var(--wind-bg);width:6.25%" title="Wind Down"></div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><span class="tl-time">6:00 AM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Wake Up</div><div class="tl-sub">Morning routine · 30 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">6:30 AM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Breakfast</div><div class="tl-sub">30 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">7:00 AM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 1</div><div class="tl-sub">Biggest task of the week · 5h</div></div></div>
+      <div class="tl-row"><span class="tl-time">12:00 PM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Lunch Break</div><div class="tl-sub">Cook + eat · 1h</div></div></div>
+      <div class="tl-row"><span class="tl-time">1:00 PM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 2</div><div class="tl-sub">Meetings, client comms, admin · 3h</div></div></div>
+      <div class="tl-row"><span class="tl-time">4:00 PM</span><div class="tl-pip" style="background:var(--personal-bg)"></div><div class="tl-content"><div class="tl-main">Personal Time</div><div class="tl-sub">Dinner, decompress, errands</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:00 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Wind Down</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:50 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Meditation</div><div class="tl-sub">5–10 min · clear the head, set intention for tomorrow</div></div></div>
+      <div class="tl-row"><span class="tl-time">10:00 PM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Lights Out</div></div></div>
+    </div>
+  </div>
+
+  <!-- WEDNESDAY -->
+  <div class="day-card">
+    <div class="card-top">
+      <div>
+        <div class="card-day-name">Wednesday</div>
+        <div class="card-hours">8h work · Gym AM</div>
+      </div>
+      <span class="card-pill pill-gym">Gym Day</span>
+    </div>
+    <div class="bar-container">
+      <div class="bar-label"><span>6 AM</span><span>10 PM</span></div>
+      <div class="bar-track">
+        <div class="bar-seg" style="background:var(--sleep-bg);width:1.9%"></div>
+        <div class="bar-seg" style="background:var(--gym-bg);width:11.25%"></div>
+        <div class="bar-seg" style="background:var(--break-bg);width:5.6%"></div>
+        <div class="bar-seg" style="background:var(--work-bg);width:30%"></div>
+        <div class="bar-seg" style="background:var(--break-bg);width:5.6%"></div>
+        <div class="bar-seg" style="background:var(--work-bg);width:30%"></div>
+        <div class="bar-seg" style="background:var(--personal-bg);width:28.1%"></div>
+        <div class="bar-seg" style="background:var(--wind-bg);width:7.5%"></div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><span class="tl-time">6:00 AM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Wake Up</div><div class="tl-sub">Hydrate, get ready</div></div></div>
+      <div class="tl-row"><span class="tl-time">6:15 AM</span><div class="tl-pip" style="background:var(--gym-bg)"></div><div class="tl-content"><div class="tl-main">Gym</div><div class="tl-sub">1h 30min session</div></div></div>
+      <div class="tl-row"><span class="tl-time">7:45 AM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Shower + Breakfast</div><div class="tl-sub">45 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">8:30 AM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 1</div><div class="tl-sub">Video editing, production pipeline · 4h</div></div></div>
+      <div class="tl-row"><span class="tl-time">12:30 PM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Lunch Break</div><div class="tl-sub">Cook + eat · 45 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">1:15 PM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 2</div><div class="tl-sub">ALVION prep, hiring, business dev · 4h</div></div></div>
+      <div class="tl-row"><span class="tl-time">5:15 PM</span><div class="tl-pip" style="background:var(--personal-bg)"></div><div class="tl-content"><div class="tl-main">Personal Time</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:00 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Wind Down</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:50 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Meditation</div><div class="tl-sub">5–10 min · clear the head, set intention for tomorrow</div></div></div>
+      <div class="tl-row"><span class="tl-time">10:00 PM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Lights Out</div></div></div>
+    </div>
+  </div>
+
+  <!-- THURSDAY -->
+  <div class="day-card">
+    <div class="card-top">
+      <div>
+        <div class="card-day-name">Thursday</div>
+        <div class="card-hours">8h work · Extra capacity</div>
+      </div>
+      <span class="card-pill pill-work">Work Day</span>
+    </div>
+    <div class="bar-container">
+      <div class="bar-label"><span>6 AM</span><span>10 PM</span></div>
+      <div class="bar-track">
+        <div class="bar-seg" style="background:var(--sleep-bg);width:3.75%"></div>
+        <div class="bar-seg" style="background:var(--break-bg);width:3.75%"></div>
+        <div class="bar-seg" style="background:var(--work-bg);width:31.25%"></div>
+        <div class="bar-seg" style="background:var(--break-bg);width:7.5%"></div>
+        <div class="bar-seg" style="background:var(--work-bg);width:18.75%"></div>
+        <div class="bar-seg" style="background:var(--personal-bg);width:28.75%"></div>
+        <div class="bar-seg" style="background:var(--wind-bg);width:6.25%"></div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><span class="tl-time">6:00 AM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Wake Up</div><div class="tl-sub">Morning routine · 30 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">6:30 AM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Breakfast</div><div class="tl-sub">30 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">7:00 AM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 1</div><div class="tl-sub">Proposals, outreach, strategy · 5h</div></div></div>
+      <div class="tl-row"><span class="tl-time">12:00 PM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Lunch Break</div><div class="tl-sub">Cook + eat · 1h</div></div></div>
+      <div class="tl-row"><span class="tl-time">1:00 PM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 2</div><div class="tl-sub">Content review, editor management · 3h</div></div></div>
+      <div class="tl-row"><span class="tl-time">4:00 PM</span><div class="tl-pip" style="background:var(--personal-bg)"></div><div class="tl-content"><div class="tl-main">Personal Time</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:00 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Wind Down</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:50 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Meditation</div><div class="tl-sub">5–10 min · clear the head, set intention for tomorrow</div></div></div>
+      <div class="tl-row"><span class="tl-time">10:00 PM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Lights Out</div></div></div>
+    </div>
+  </div>
+
+  <!-- FRIDAY -->
+  <div class="day-card">
+    <div class="card-top">
+      <div>
+        <div class="card-day-name">Friday</div>
+        <div class="card-hours">8h work · Gym AM · Early wrap</div>
+      </div>
+      <span class="card-pill pill-gym">Gym Day</span>
+    </div>
+    <div class="bar-container">
+      <div class="bar-label"><span>6 AM</span><span>10 PM</span></div>
+      <div class="bar-track">
+        <div class="bar-seg" style="background:var(--sleep-bg);width:1.9%"></div>
+        <div class="bar-seg" style="background:var(--gym-bg);width:11.25%"></div>
+        <div class="bar-seg" style="background:var(--break-bg);width:5.6%"></div>
+        <div class="bar-seg" style="background:var(--work-bg);width:30%"></div>
+        <div class="bar-seg" style="background:var(--break-bg);width:5.6%"></div>
+        <div class="bar-seg" style="background:var(--work-bg);width:30%"></div>
+        <div class="bar-seg" style="background:var(--personal-bg);width:35.65%"></div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><span class="tl-time">6:00 AM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Wake Up</div></div></div>
+      <div class="tl-row"><span class="tl-time">6:15 AM</span><div class="tl-pip" style="background:var(--gym-bg)"></div><div class="tl-content"><div class="tl-main">Gym</div><div class="tl-sub">1h 30min session</div></div></div>
+      <div class="tl-row"><span class="tl-time">7:45 AM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Shower + Breakfast</div><div class="tl-sub">45 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">8:30 AM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 1</div><div class="tl-sub">Weekly client deliveries, wrap-up · 4h</div></div></div>
+      <div class="tl-row"><span class="tl-time">12:30 PM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Lunch Break</div><div class="tl-sub">45 min</div></div></div>
+      <div class="tl-row"><span class="tl-time">1:15 PM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Deep Work — Block 2</div><div class="tl-sub">Week review + Monday planning · 4h</div></div></div>
+      <div class="tl-row"><span class="tl-time">5:15 PM</span><div class="tl-pip" style="background:var(--personal-bg)"></div><div class="tl-content"><div class="tl-main">Weekend Begins</div><div class="tl-sub">Shut laptop. Done for the week.</div></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- WEEKEND -->
+<div class="section-label">Weekend</div>
+<div class="cards-grid" style="grid-template-columns: repeat(2, 1fr);">
+
+  <div class="day-card">
+    <div class="card-top">
+      <div>
+        <div class="card-day-name">Saturday</div>
+        <div class="card-hours">Protected · Full recharge</div>
+      </div>
+      <span class="card-pill pill-off">Off</span>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><span class="tl-time">7:30 AM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Natural Wake</div><div class="tl-sub">No alarm</div></div></div>
+      <div class="tl-row"><span class="tl-time">8:00 AM</span><div class="tl-pip" style="background:var(--break-bg)"></div><div class="tl-content"><div class="tl-main">Slow Morning</div><div class="tl-sub">Coffee, breakfast, no rush</div></div></div>
+      <div class="tl-row"><span class="tl-time">All Day</span><div class="tl-pip" style="background:var(--personal-bg)"></div><div class="tl-content"><div class="tl-main">Girlfriend · Friends · Family</div><div class="tl-sub">Full day protected. No guilt, no work.</div></div></div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="card-top">
+      <div>
+        <div class="card-day-name">Sunday</div>
+        <div class="card-hours">Reset + optional prep</div>
+      </div>
+      <span class="card-pill pill-off">Reset</span>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><span class="tl-time">7:30 AM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Natural Wake</div></div></div>
+      <div class="tl-row"><span class="tl-time">8:00 AM</span><div class="tl-pip" style="background:var(--personal-bg)"></div><div class="tl-content"><div class="tl-main">Morning + Personal Time</div><div class="tl-sub">Family, girlfriend, walk, errands</div></div></div>
+      <div class="tl-row"><span class="tl-time">4:00 PM</span><div class="tl-pip" style="background:var(--work-bg)"></div><div class="tl-content"><div class="tl-main">Optional Weekly Prep</div><div class="tl-sub">Max 1–2h · ClickUp review, set Monday priorities</div></div></div>
+      <div class="tl-row"><span class="tl-time">6:00 PM</span><div class="tl-pip" style="background:var(--personal-bg)"></div><div class="tl-content"><div class="tl-main">Dinner + Unwind</div></div></div>
+      <div class="tl-row"><span class="tl-time">9:50 PM</span><div class="tl-pip" style="background:var(--wind-bg)"></div><div class="tl-content"><div class="tl-main">Meditation</div><div class="tl-sub">5–10 min · reset for the week ahead</div></div></div>
+      <div class="tl-row"><span class="tl-time">10:00 PM</span><div class="tl-pip" style="background:var(--sleep-bg)"></div><div class="tl-content"><div class="tl-main">Lights Out</div><div class="tl-sub">Back to weekday rhythm</div></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- WORK HOURS CHART -->
+<div class="section-label">Weekly Work Distribution</div>
+<div class="work-summary">
+  <div class="ws-col">
+    <div class="ws-day">Mon</div>
+    <div class="ws-bar-wrap"><div class="ws-bar gym-day" style="height:100%"></div></div>
+    <div class="ws-hours">8h</div>
+    <div class="ws-type">Gym · 4+4</div>
+  </div>
+  <div class="ws-col">
+    <div class="ws-day">Tue</div>
+    <div class="ws-bar-wrap"><div class="ws-bar" style="height:100%"></div></div>
+    <div class="ws-hours">8h</div>
+    <div class="ws-type">Work · 5+3</div>
+  </div>
+  <div class="ws-col">
+    <div class="ws-day">Wed</div>
+    <div class="ws-bar-wrap"><div class="ws-bar gym-day" style="height:100%"></div></div>
+    <div class="ws-hours">8h</div>
+    <div class="ws-type">Gym · 4+4</div>
+  </div>
+  <div class="ws-col">
+    <div class="ws-day">Thu</div>
+    <div class="ws-bar-wrap"><div class="ws-bar" style="height:100%"></div></div>
+    <div class="ws-hours">8h</div>
+    <div class="ws-type">Work · 5+3</div>
+  </div>
+  <div class="ws-col">
+    <div class="ws-day">Fri</div>
+    <div class="ws-bar-wrap"><div class="ws-bar gym-day" style="height:100%"></div></div>
+    <div class="ws-hours">8h</div>
+    <div class="ws-type">Gym · 4+4</div>
+  </div>
+</div>
+
+<!-- SCHEDULE RULES -->
+<div class="section-label">Non-Negotiable Rules</div>
+<div class="rules-grid">
+  <div class="rule-card">
+    <div class="rule-num">Rule 01</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">Block 1 = Creation Only</div>
+    <div class="rule-body">Morning block is for editing, shooting, building, and thinking. Zero emails, zero Slack, zero client messages until Block 2. Guard it like money.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 02</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">Gym is Locked In</div>
+    <div class="rule-body">Mon / Wed / Fri, 6:15 AM. Non-negotiable. Missing it sets a precedent for missing other things. It also protects your mental state for the work ahead.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 03</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">10 PM Hard Cutoff</div>
+    <div class="rule-body">Screens off by 9 PM, in bed by 10. Sleep is the highest ROI activity in your schedule. Tired founders make poor decisions and produce poor work.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 04</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">Breaks Are Real</div>
+    <div class="rule-body">Lunch is not a working lunch. Step away from the screen, actually cook and eat. This is the reset that makes Block 2 quality match Block 1.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 05</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">Weekend is Sacred</div>
+    <div class="rule-body">Saturday is fully protected. Sunday prep is optional and capped at 2h. If you erode the weekend, burnout arrives faster than any client deadline will.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 06</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">Run It for 6 Weeks</div>
+    <div class="rule-body">Don't adjust the schedule week to week. Commit to this exact structure for 6 weeks minimum. Consistency is what makes a routine into a system.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 07</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">No Meetings Before Noon</div>
+    <div class="rule-body">All calls — clients, interviews, partners — live in Block 2. Block 1 is untouchable. If someone can only do mornings, offer an afternoon slot. Most will accommodate.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 08</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">Client &amp; Interview Calls</div>
+    <div class="rule-body">GTA clients and videographer interviews go Tue/Thu, 1–3 PM. Non-gym days mean you're not rushed from a morning session and your afternoon energy is at its best.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 09</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">Editor Comms = Async First</div>
+    <div class="rule-body">Vietnam (+11h) and India (+9.5h) editors work while you sleep. Send detailed briefs at end of Block 2 (4–5 PM your time = their next morning). Review their output at the start of Block 1. If a live call is ever needed, 7–8 AM your time is the only viable window.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-num">Rule 10</div>
+    <span class="rule-accent"></span>
+    <div class="rule-title">ALVION &amp; Networking</div>
+    <div class="rule-body">Schedule networking calls and ALVION prep for late Block 2, 3–5 PM. Lower priority than client and production work — they come after, not instead of.</div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-text">Escalation Media · Weekly OS v2.0 · 8h Structure</span>
+  <span class="footer-total">40h focused work per week · 8h sleep · 3× gym</span>
+</footer>
+
+</body>
+</html>

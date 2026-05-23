@@ -1,0 +1,19 @@
+{
+  "id": "conv-1779472532463-yjvs5a8kw",
+  "title": "Check schedule task results",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779472532463,
+  "updatedAt": 1779479628458,
+  "lastResponseAt": 1779472542860,
+  "sessionId": "90de813e-c5ee-410d-8e93-d108bc631e60",
+  "sdkSessionId": "90de813e-c5ee-410d-8e93-d108bc631e60",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 10,
+    "cacheCreationInputTokens": 106088,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 106098,
+    "percentage": 53
+  }
+}

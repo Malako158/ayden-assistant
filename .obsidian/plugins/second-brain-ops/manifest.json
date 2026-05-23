@@ -1,0 +1,10 @@
+{
+  "id": "second-brain-ops",
+  "name": "Second Brain Ops Center",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Unified dashboard for Claude Code, Omi AI, and Obsidian scheduled tasks and outputs — all in one panel.",
+  "author": "Ayden — Escalation Media",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}

@@ -1,0 +1,19 @@
+{
+  "id": "conv-1779481024185-n5q1d0nzw",
+  "title": "Remove WhatsApp module from Assistant",
+  "titleGenerationStatus": "success",
+  "createdAt": 1779481024185,
+  "updatedAt": 1779506711178,
+  "lastResponseAt": 1779506424777,
+  "sessionId": "404ca928-30cc-420b-996d-405bbb2680e4",
+  "sdkSessionId": "404ca928-30cc-420b-996d-405bbb2680e4",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 29010,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 29013,
+    "percentage": 15
+  }
+}
