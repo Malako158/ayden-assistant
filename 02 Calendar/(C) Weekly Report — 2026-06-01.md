@@ -1,0 +1,130 @@
+# Weekly Report — Week of June 1–7, 2026
+**Generated:** Monday, June 1, 2026 | **Timezone:** America/Toronto
+
+---
+
+## Week at a Glance
+
+| Day | Key Events | Load |
+|-----|-----------|------|
+| **Mon Jun 1** | First day back from Miami. Helen & Maverick briefs (5pm, 8pm) | 🟡 Light — morning open |
+| **Tue Jun 2** | Block 1 Return & Reset · Rion meeting (12pm) · Block 2 Ops | 🟡 Medium |
+| **Wed Jun 3** | Gym 7am · Block 1 Deep Work · Block 2 Ops | 🟢 Focused |
+| **Thu Jun 4** | Greening Homes (10am) · **Resimate Shoot 11am–4pm** | 🔴 Heavy — full shoot day |
+| **Fri Jun 5** | Maverick brief (8:30am) · Weekly Report (10am) · Alvion Founders (11am) | 🔴 Heavy — 4 back-to-back |
+| **Sat Jun 6** | **Fit Kid Lab Shoot** (all day, Oakville) | 🔴 Shoot day |
+| **Sun Jun 7** | No events | 🟢 Rest |
+
+---
+
+## Top Priorities This Week
+
+1. **Thu — Resimate Shoot (11am–4pm)** — Client shoot at 2286 Springfield Ct, Mississauga. Prep Run of Show (Zach's doc) beforehand.
+2. **Thu — Greening Homes meeting (10am)** — First call with Chris Phillips & Yvonne Bambrick. Have content ideas ready.
+3. **Sat — Fit Kid Lab Shoot** — All-day shoot at 427 Speers Rd #20, Oakville. Gear check Wed/Thu.
+4. **Fri — Alvion Founders Weekly** — Brand vision/development agenda. Bring content style progress.
+5. **Today — E-transfer Ahmed** — High priority financial task sitting since May 25.
+
+---
+
+## Day-by-Day Detail
+
+### Monday, June 1 — First Day Back
+| Time | Event |
+|------|-------|
+| Morning | **OPEN** — use for re-entry: email triage, task sorting, E-transfer Ahmed |
+| 4:45pm | 📋 Prep — Weekly Brief |
+| 5:00pm | Send Weekly Brief to Helen & Maverick |
+| 5:00pm | Weekly Brief w/ Helen (Text) |
+| 7:45pm | 📋 Prep — Helen & Maverick Brief |
+| 8:00pm | Helen Weekly Brief |
+| 8:00pm | Maverick Weekly Brief |
+| 9:00pm | 🌙 Wind Down |
+
+**Notes:** Just back from Miami. Morning is unblocked — ideal for getting oriented and clearing the backlog before the week kicks off. No deep-work block scheduled yet.
+
+---
+
+### Tuesday, June 2 — Return & Reset
+| Time | Event |
+|------|-------|
+| 9:00am–11:30am | 🔵 Block 1 — Return & Reset |
+| 11:30am–12:00pm | 🍽️ Lunch |
+| 12:00pm–12:30pm | Meeting w/ Rion & Ayden (Google Meet) |
+| 1:00pm–3:00pm | 🟡 Block 2 — Ops & Comms |
+| 9:00pm–9:30pm | 🌙 Wind Down |
+
+**Notes:** Rion's contractor agreement is signed. This meeting can confirm deliverables and kickoff.
+
+---
+
+### Wednesday, June 3 — Deep Work Day
+| Time | Event |
+|------|-------|
+| 7:00am–8:00am | 🏋️ Gym |
+| 9:00am–12:00pm | 🔵 Block 1 — Deep Work |
+| 12:00pm–1:00pm | 🍽️ Lunch |
+| 1:00pm–3:00pm | 🟡 Block 2 — Ops & Comms |
+| 9:00pm–9:30pm | 🌙 Wind Down |
+
+**Notes:** Best deep work day of the week — no meetings. Use Block 1 for shoot prep (review Run of Show, gear check, Greening Homes prep).
+
+---
+
+### Thursday, June 4 — Big Client Day 🔴
+| Time | Event |
+|------|-------|
+| 9:45am | 📋 Prep — Meeting w/ Chris & Ayden |
+| 10:00am–10:30am | **Meeting w/ Chris & Ayden (Greening Homes)** — Google Meet (Chris Phillips + Yvonne Bambrick) |
+| 11:00am–4:00pm | **Resimate Shoot (Shoot 1 of 2)** — 2286 Springfield Ct, Mississauga |
+| 9:00pm–9:30pm | 🌙 Wind Down |
+
+**Notes:** Back-to-back client commitments. Greening Homes call ends at 10:30am; shoot starts 11am at Mississauga — allow 20min drive. Review Zach Karson's Run of Show doc before 11am.
+
+---
+
+### Friday, June 5 — Meeting-Heavy
+| Time | Event |
+|------|-------|
+| 8:15am | 📋 Prep — Meeting w/ Maverick & Ayden |
+| 8:30am–9:00am | Meeting w/ Maverick & Ayden (Google Meet) |
+| 10:00am–11:00am | Weekly Report — ACE Coworking (295 Robinson St, Oakville) |
+| 11:00am–1:00pm | Alvion Founders Weekly Meeting (295 Robinson St, Oakville) |
+| 1:00pm–2:00pm | 🍽️ Lunch |
+| 2:00pm–4:00pm | 🟡 Block 2 — Ops & Comms |
+| 9:00pm–9:30pm | 🌙 Wind Down |
+
+**Notes:** Weekly Report + Alvion Founders both at ACE Coworking — no travel gap. Have Alvion content style progress ready for the Founders meeting. Agenda: Brand Vision/Development + Prep Topic for next week.
+
+---
+
+### Saturday, June 6 — Fit Kid Lab Shoot 📸
+| Time | Event |
+|------|-------|
+| All Day | **Fit Kid Lab Shoot** — 427 Speers Rd #20, Oakville |
+
+**Notes:** Full shoot day. Radix Performance attending. Gear check Friday before wind-down.
+
+---
+
+### Sunday, June 7 — Rest Day
+No scheduled events. Recovery from shoot week.
+
+---
+
+## Email → Calendar Cross-Reference
+
+| Source | Commitment | Status |
+|--------|-----------|--------|
+| Greening Homes email thread | Meeting Thu Jun 4 10am | ✅ On calendar |
+| Resimate Shoot invite | Shoot Thu Jun 4 11am–4pm | ✅ On calendar |
+| Offshore Club Run of Show (Zach Karson) | Review before shoot | ⚠️ Action needed — not on calendar |
+| Indeed applicants | Review videographer applications | ⚠️ No calendar block — add to Ops time |
+
+**Flags:**
+- No missing calendar commitments from email
+- Thu Jun 4 is very tight: Greening Homes ends 10:30am, Resimate starts 11am at Mississauga. **Allow 20min drive — no slack.**
+
+---
+
+*Generated by Ayden Assistant · 2026-06-01*
