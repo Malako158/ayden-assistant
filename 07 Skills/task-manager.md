@@ -1,6 +1,6 @@
 # Skill: Task Manager (Module 4)
 
-Pulls all open tasks from Notion, cross-references against calendar and emails, and surfaces the single most important task today plus a full prioritized breakdown.
+Pulls all open tasks from Notion, cross-references against calendar, emails, and past Claude conversations (prior briefings + iteration logs), and surfaces the single most important task today plus a full prioritized breakdown.
 
 ---
 
@@ -21,9 +21,10 @@ Pulls all open tasks from Notion, cross-references against calendar and emails, 
 3. Filter out tasks with Status = **Done** — don't surface them
 4. Pull today's calendar events via `list_events` (calendarId: `ayden@escalation-media.com`, today only) for cross-reference
 5. Pull recent unread emails via `search_threads` (query: `is:unread newer_than:2d -in:draft`) for cross-reference
-6. Apply Priority Logic (see below)
-7. Generate the Task Briefing output (see format below)
-8. Save to `03 Projects/Assistant/04 Task Manager/(C) Task Briefing — YYYY-MM-DD.md`
+6. Pull past Claude conversations for cross-reference — read the most recent prior `(C) Task Briefing — *.md` files in `03 Task Manager/` (last 3–5 days) and any recent notes in `09 Iteration Logs/`. Use these to spot tasks that were flagged #1 or 🔴 Do Today but never moved to Done, recurring carry-overs, and commitments Claude surfaced previously
+7. Apply Priority Logic (see below)
+8. Generate the Task Briefing output (see format below)
+9. Save to `03 Projects/Assistant/04 Task Manager/(C) Task Briefing — YYYY-MM-DD.md`
 
 ---
 
@@ -38,6 +39,7 @@ When determining the #1 task of the day, score each open task against:
 | Mentioned in recent email (urgent tone, pending action) | +2 |
 | Related to calendar event today or this week | +2 |
 | Ties directly to revenue or client delivery | +2 |
+| Carried over from a prior briefing as #1 or 🔴 Do Today and still not Done | +2 |
 | Status = Doing (already in progress) | +1 |
 | Status = Waiting (blocked — needs a decision or action to unblock) | +1 |
 | Status = Inbox / To-Do (not started) | 0 |
@@ -67,6 +69,8 @@ After scoring, bucket all open tasks into three tiers:
 | Task has a due date in the past | Flag as ⚠️ Overdue |
 | Email implies task is done (e.g., contract signed) | Flag as ✅ Likely done — verify in Notion |
 | Task has Status = Waiting | Note what it's waiting on if known |
+| Task appeared in a prior briefing but still isn't Done | Flag as 🔁 Carry-over — note how many days it's been open |
+| Past conversation/iteration log committed to an action not yet in Notion | Surface as a suggested task to add |
 
 ---
 
@@ -125,3 +129,4 @@ Status: [Status] · Priority: [Priority]
 - Never surface Done tasks in the briefing
 - Save all output files with `(C)` prefix in `04 Task Manager/`
 - Cross-reference with Module 1 (email) and Module 3 (calendar) output from the same day for the most accurate picture
+- Past Claude conversations are read from persisted artifacts: prior `(C) Task Briefing — *.md` files (`03 Task Manager/`) and `09 Iteration Logs/`. Use them to catch carry-overs and commitments that never made it into Notion

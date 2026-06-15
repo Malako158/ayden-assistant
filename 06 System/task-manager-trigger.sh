@@ -14,7 +14,7 @@ echo "=== Task Manager triggered at $(date) ===" >> "$LOG_FILE"
 cd "$VAULT" && /Users/aydenatkinson/.local/bin/claude \
   --print \
   --dangerously-skip-permissions \
-  "Run Module 4 — Task Manager. Follow the instructions in 03 Projects/Assistant/08 Skills/task-manager.md exactly — pull all open tasks from Notion, cross-reference with today's calendar and recent emails, apply priority scoring, and save the output to 03 Projects/Assistant/04 Task Manager/(C) Task Briefing — $(date +%Y-%m-%d).md" \
+  "Run Module 4 — Task Manager. Follow the instructions in 03 Projects/Assistant/08 Skills/task-manager.md exactly — pull all open tasks from Notion, cross-reference with today's calendar, recent emails, and past Claude conversations (recent prior briefings and iteration logs), apply priority scoring, and save the output to 03 Projects/Assistant/04 Task Manager/(C) Task Briefing — $(date +%Y-%m-%d).md" \
   >> "$LOG_FILE" 2>&1
 
 echo "=== Completed at $(date) ===" >> "$LOG_FILE"
